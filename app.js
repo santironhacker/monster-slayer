@@ -19,6 +19,9 @@ const app = Vue.createApp({
 		},
 		mayUseSpecialAttack() {
 			return this.currentRound % 3 !== 0;
+		},
+		mayPlayerHeal() {
+			return this.playerHealth >= 100;
 		}
 	},
 	methods: {
@@ -38,6 +41,16 @@ const app = Vue.createApp({
 			const attackValue = getRamdomValue(8, 15);
 			this.playerHealth -= attackValue
 		},
+		healPlayer() {
+			this.currentRound++;
+			const healValue = getRamdomValue(8, 20);
+			if(this.playerHealth + healValue > 100) {
+				this.playerHealth = 100;
+			} else {
+				this.playerHealth += healValue;
+			}
+			this.attackPlayer();
+		}
 	},
 });
 
