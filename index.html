@@ -42,7 +42,7 @@
 		<h3 v-else>It's a draw!</h3>
 		<button v-on:click="startNewGame">Start a new game</button>
 	  </section>
-      <section id="controls">
+      <section id="controls" v-else>
         <button v-on:click="attackMonster">ATTACK</button>
         <button 
 			v-on:click="specialAttackMonster"
@@ -52,7 +52,7 @@
 			v-on:click="healPlayer"
 			v-bind:disabled="mayPlayerHeal"
 		>HEAL</button>
-        <button>SURRENDER</button>
+        <button v-on:click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
